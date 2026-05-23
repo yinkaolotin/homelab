@@ -4,10 +4,6 @@ class homelab::git_ssh (
 ) {
   $home_dir = "/home/${username}"
 
-  package { 'git':
-    ensure => installed,
-  }
-
   file { "${home_dir}/.ssh":
     ensure => directory,
     owner  => $username,

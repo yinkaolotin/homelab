@@ -12,6 +12,11 @@ node 'master', 'master.', 'master..' {
   class { 'homelab::k8s_master':
     k8s_token => $k8s_cluster_token,
   }
+
+  class { 'homelab::git_ssh':
+    username => 'yinkaolotin',
+    key_name => 'github_homelab_ed25519',
+  }
 }
 
 node 'worker-1', 'worker-1.', 'worker-1..' {
@@ -21,6 +26,11 @@ node 'worker-1', 'worker-1.', 'worker-1..' {
     k8s_url   => $k8s_master_url,
     k8s_token => $k8s_cluster_token,
   }
+  
+  class { 'homelab::git_ssh':
+    username => 'yinkaolotin',
+    key_name => 'github_homelab_ed25519',
+  }
 }
 
 node 'worker-2', 'worker-2.', 'worker-2..' {
@@ -29,6 +39,11 @@ node 'worker-2', 'worker-2.', 'worker-2..' {
   class { 'homelab::k8s_worker':
     k8s_url   => $k8s_master_url,
     k8s_token => $k8s_cluster_token,
+  }
+
+  class { 'homelab::git_ssh':
+    username => 'yinkaolotin',
+    key_name => 'github_homelab_ed25519',
   }
 }
 

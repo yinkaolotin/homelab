@@ -1,26 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tiny-dev
+  name: root
   namespace: argocd
 spec:
   project: default
-
   source:
-    repoURL: https://github.com/yinkaolotin/homelab.git
+    repoURL: git@github.com:yinkaolotin/homelab.git
     targetRevision: HEAD
-    path: services/tiny/charts/tiny
-    helm:
-      valueFiles:
-        - ../../values/dev.yaml
-
+    path: infra/argocd/apps
   destination:
     server: https://kubernetes.default.svc
-    namespace: tiny-dev
-
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

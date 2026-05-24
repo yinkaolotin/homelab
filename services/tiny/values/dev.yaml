@@ -38,3 +38,8 @@ serviceMonitor:
   path: /metrics
   labels:
     release: kube-prometheus
+
+prometheusRule:
+  enabled: true
+  labels:
+    release: kube-prometheus

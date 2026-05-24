@@ -43,3 +43,12 @@ prometheusRule:
   enabled: true
   labels:
     release: kube-prometheus
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: tiny.local
+      paths:
+        - path: /
+          pathType: Prefix

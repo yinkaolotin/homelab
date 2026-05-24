@@ -10,6 +10,7 @@ spec:
     targetRevision: HEAD
     path: services/tiny/charts/tiny
     helm:
+      releaseName: tiny
       valueFiles:
         - ../../values/dev.yaml
   destination:

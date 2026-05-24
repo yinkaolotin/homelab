@@ -1,20 +1,30 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ghcr.io/yinkaolotin/tiny
   pullPolicy: IfNotPresent
-  tag: stable
+  tag: "0.1.0"
 
 service:
-  type: ClusterIP
+  targetPort: 8080
   port: 80
 
-ingress:
-  enabled: false
+env:
+  SERVICE_NAME: tiny
+  SERVICE_ENV: dev
+  HTTP_PORT: "8080"
+  LOG_LEVEL: info
+  DATA_DIR: /data
+
+persistence:
+  enabled: true
+  size: 1Gi
+  storageClassName: local-path
 
 resources:
   requests:
-    cpu: 25m
+    cpu: 50m
     memory: 64Mi
   limits:
+    cpu: 250m
     memory: 128Mi

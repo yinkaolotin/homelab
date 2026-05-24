@@ -1,0 +1,30 @@
+fullnameOverride: kube-prometheus
+
+grafana:
+  enabled: true
+  defaultDashboardsEnabled: true
+  adminPassword: admin
+
+alertmanager:
+  enabled: true
+
+prometheus:
+  enabled: true
+  prometheusSpec:
+    retention: 3d
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    resources:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+      limits:
+        memory: 1Gi
+
+kubeStateMetrics:
+  enabled: true
+
+nodeExporter:
+  enabled: true

@@ -31,3 +31,10 @@ resources:
 
 imagePullSecrets:
   - name: ghcr-pull-secret
+
+serviceMonitor:
+  enabled: true
+  interval: 30s
+  path: /metrics
+  labels:
+    release: kube-prometheus

@@ -44,6 +44,8 @@ prometheusRule:
   labels:
     release: kube-prometheus
 
+# then add <master-ip> tiny.local to /etc/hosts
+# curl -H "Host: tiny.local" <master-ip>:32080
 ingress:
   enabled: true
   className: nginx

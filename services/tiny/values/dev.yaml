@@ -54,3 +54,13 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+database:
+  host: shared-postgres-rw.shared-postgres-dev.svc.cluster.local
+  port: 5432
+  name: tiny
+  user: tiny
+  # Secret expected inside tiny-dev namespace
+  existingSecret: tiny-postgres-credentials
+  # key inside the Secret
+  passwordKey: password

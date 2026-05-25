@@ -31,7 +31,7 @@ spec:
           env:
             {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
-              value: "{{ $value | quote }}"
+              value: {{ $value | quote }}
             {{- end }}
 
             {{- if .Values.database.enabled }}

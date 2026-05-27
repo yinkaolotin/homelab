@@ -15,6 +15,7 @@ env:
   HTTP_PORT: "8080"
   LOG_LEVEL: info
   DATA_DIR: /data
+  STORAGE_BACKEND: postgres
 
 persistence:
   enabled: true
@@ -54,6 +55,14 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+migrations:
+  enabled: true
+  backoffLimit: 3
+  command:
+    - /app/tiny
+  args:
+    - migrate
 
 database:
   enabled: true

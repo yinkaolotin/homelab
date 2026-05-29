@@ -3,16 +3,13 @@ kind: Application
 metadata:
   name: minio
   namespace: argocd
-
 spec:
   project: default
 
   sources:
-
-    - repoURL: https://charts.bitnami.com/bitnami
+    - repoURL: https://helm.min.io/
       chart: minio
-      targetRevision: 17.0.19
-
+      targetRevision: 5.4.0
       helm:
         valueFiles:
           - $values/infra/backup/minio/values.yaml
@@ -29,6 +26,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
     syncOptions:
       - CreateNamespace=true

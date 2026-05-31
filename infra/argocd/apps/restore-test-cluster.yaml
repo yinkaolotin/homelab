@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shared-postgres-restore
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:yinkaolotin/homelab.git
+    targetRevision: main
+    path: infra/storage/postgres/restore-test
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: shared-postgres-restore
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

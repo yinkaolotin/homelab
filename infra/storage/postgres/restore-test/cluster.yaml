@@ -1,0 +1,23 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: shared-postgres-restore
+  namespace: shared-postgres-restore
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+
+  storage:
+    size: 5Gi
+
+  bootstrap:
+    recovery:
+      source: shared-postgres-backup
+
+  externalClusters:
+    - name: shared-postgres-backup
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: minio-store
+          serverName: shared-postgres

@@ -14,7 +14,7 @@ spec:
     recovery:
       source: shared-postgres-backup
       recoveryTarget:
-        targetTime: "2026-05-31T08:41:32.188148Z"
+        targetTime: "2026-05-31 08:41:32.188148+00"
 
   externalClusters:
     - name: shared-postgres-backup

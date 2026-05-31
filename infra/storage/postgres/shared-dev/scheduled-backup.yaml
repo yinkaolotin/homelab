@@ -1,0 +1,13 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: shared-postgres-daily
+  namespace: shared-postgres-dev
+spec:
+  schedule: "0 0 2 * * *"
+  backupOwnerReference: self
+  method: plugin
+  cluster:
+    name: shared-postgres
+  pluginConfiguration:
+    name: barman-cloud.cloudnative-pg.io
